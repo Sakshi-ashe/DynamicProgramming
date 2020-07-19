@@ -1,0 +1,83 @@
+Subset sum -- Codechef
+import java.io.*;
+import java.util.*;
+
+class TestClass {
+public static long max(long a, long b) 
+    { 
+        return (a > b) ? a : b; 
+    } 
+  
+
+    public static void main(String args[] ) throws Exception {
+        try{
+
+        //BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       
+       int t = Integer.parseInt(br.readLine());
+       while(t>0){
+            
+        StringTokenizer stv  =new StringTokenizer(br.readLine());
+       int n= Integer.parseInt(stv.nextToken());
+       int c= Integer.parseInt(stv.nextToken());
+            
+            
+       //StringTokenizer stv  =new StringTokenizer(br.readLine());
+       StringTokenizer stw  =new StringTokenizer(br.readLine());
+
+
+
+        
+        int []w = new int[n];
+        for(int i=0;i<n;i++){
+           
+           w[i] = Integer.parseInt(stw.nextToken());
+        }
+
+
+        boolean[][] dp= new boolean[c+1][n+1];
+        
+
+//System.out.println(" input ss");
+
+
+        for(int i=0;i<=c;i++){
+            for(int j=0;j<=n;j++){
+               
+               if(i==0 || j==0){
+                if(j==0) dp[i][j] = false;
+                if(i==0 ) dp[i][j] = true;
+               }
+             
+                
+                else if(w[j-1] <= i){
+                    
+                    dp[i][j] = 
+
+                         dp[i- w[j-1]][j-1] || dp[i][j-1] ;
+                   
+                    
+                }
+
+                else if(w[j-1] > i) { dp[i][j] = dp[i][j-1] ; 
+                   
+                }
+           
+           // System.out.println(i+" "+j+"  "+dp[i][j]);
+            }
+            
+            
+        }
+        
+        if(dp[c][n] == false) System.out.println(0);
+
+       else System.out.println(1);
+  
+           
+           t--;
+       }
+        }
+        catch(Exception e){return ;}
+    }  
+}
