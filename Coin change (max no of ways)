@@ -1,0 +1,77 @@
+import java.io.*;
+import java.lang.Math;
+import java.util.*;
+
+class GFG {
+
+  
+
+    public static void main(String args[] ) throws Exception {
+        try{
+
+        //BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       
+       int t = Integer.parseInt(br.readLine());
+       while(t>0){
+           
+            
+       int n= Integer.parseInt(br.readLine());
+       
+            
+      
+       StringTokenizer stA  =new StringTokenizer(br.readLine());
+
+
+
+       
+        int []B = new int[n];
+        for(int i=0;i<n;i++){
+           
+           B[i] = Integer.parseInt(stA.nextToken());
+           
+        }
+
+        int c= Integer.parseInt(br.readLine());
+
+        long[][] dp= new long[c+1][n+1];
+        
+
+
+
+        for(int i=0;i<=c;i++){
+            for(int j=0;j<=n;j++){
+                //long ki = i;
+                
+               if(i==0 || j==0){
+                if(j==0) dp[i][j] = 0; // no of elements = 0
+                if(i==0 ) dp[i][j] = 1; //sum = 0;
+               }
+             
+
+                else{
+                if(B[j-1] <= i){
+                    
+                    dp[i][j] = 
+
+                         (dp[i- B[j-1]][j] +
+                        dp[i][j-1])  ;
+
+                    
+                }
+
+                else { dp[i][j] = dp[i][j-1] ; }
+                }
+            }
+        }
+
+       System.out.println( dp[c][n] );
+  
+           
+           t--;
+       }
+        }
+        catch(Exception e){return ;}
+    }  
+}
+
