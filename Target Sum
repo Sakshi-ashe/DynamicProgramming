@@ -1,0 +1,67 @@
+class Solution {
+
+    public int findTargetSumWays(int[] nums, int S) {
+        
+        int Range = 0; 
+        int n =nums.length;
+        int B[] = new int[n];
+        int count =0;
+       
+        for(int i=0;i<n;i++){
+           
+           Range += nums[i];
+            if(nums[i] != 0) {B[count] = nums[i]; count++;}
+           
+        }
+        if((Range+S)%2 == 1 ) return 0; 
+        
+        if(Range >= S){
+         
+        int S1 = (Range - S)/2 ; 
+        
+        
+        
+
+        int[][] dp= new int[S1+1][count+1];
+        
+
+
+
+        for(int i=0;i<=S1;i++){
+            for(int j=0;j<=count;j++){
+                //long ki = i;
+                
+               if(i==0 || j==0){
+                if(j==0) dp[i][j] = 0; // no of elements = 0
+                if(i==0 ) dp[i][j] = 1; //sum = 0;
+               }
+             
+
+                else{
+                if(B[j-1] <= i){
+                    
+                    dp[i][j] = 
+
+                         (dp[i- B[j-1]][j-1] + dp[i][j-1] ) ;
+
+                    
+                }
+
+                else { dp[i][j] = dp[i][j-1] ; }
+                }
+            }
+        }
+        
+        
+       
+       if(n-count > 0 )  return dp[S1][count]*((int)Math.pow(2,n-count)) ;
+       else return dp[S1][count];
+       
+      
+        }
+        else{
+            return 0;
+        }
+        
+    }
+}
