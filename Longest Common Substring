@@ -1,0 +1,59 @@
+
+import java.io.*;
+import java.util.*;
+class TestClass {
+  
+
+    public static void main(String args[] ) throws Exception {
+        try{
+
+        //BufferedReader
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+       
+       int t = Integer.parseInt(br.readLine());
+       
+       while(t>0){
+           
+            StringTokenizer st  =new StringTokenizer(br.readLine());
+            
+            int m= Integer.parseInt(st.nextToken());
+            int n= Integer.parseInt(st.nextToken());
+            
+            
+            String stA  =br.readLine();
+            String stB  =br.readLine();
+
+
+            int[][] dp= new int[m+1][n+1];
+            int max = Integer.MIN_VALUE;
+
+
+            for(int i=0;i<=m;i++){
+                 for(int j=0;j<=n;j++){
+                
+                        if(i==0 || j==0) dp[i][j] = 0;
+
+                
+                        else if(stA.charAt(i-1) == stB.charAt(j-1)){
+                    
+                             dp[i][j] = 1 + dp[i-1][j-1];
+                             
+                             if(dp[i][j] > max) max = dp[i][j];
+                        }
+
+                        else {
+                            dp[i][j] = 0 ;
+                        }
+                    }
+             }
+
+            if(max != Integer.MIN_VALUE ) System.out.println(max);
+            else System.out.println(0);
+  
+           
+            t--;
+        }
+        }
+        catch(Exception e){return ;}
+    }  
+}
