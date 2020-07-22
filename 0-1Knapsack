@@ -1,8 +1,8 @@
-0`1 knapsack  -- GFG
-
 import java.io.*;
 import java.util.*;
+
 class TestClass {
+
 public static long max(long a, long b) 
     { 
         return (a > b) ? a : b; 
