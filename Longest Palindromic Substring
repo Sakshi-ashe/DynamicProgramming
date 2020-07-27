@@ -1,0 +1,74 @@
+class Solution {
+    public String longestPalindrome(String s) {
+        
+    if(s.length()>0){
+            
+        String t = "";
+        for(int i=0;i<s.length();i++){
+            t += s.charAt(s.length() - 1 -i); 
+            
+        }
+        
+        int m  = s.length();
+        int n = m; 
+        
+            int[][] dp= new int[m+1][n+1];
+        
+        int maxChain = 0;
+        String ans =""; 
+       
+
+
+            for(int i=0;i<=m;i++){
+                 for(int j=0;j<=n;j++){
+                
+                        if(i==0 || j==0) dp[i][j] = 0;
+
+                
+                        else if(s.charAt(i-1) == t.charAt(j-1)){
+                    
+                             dp[i][j] = 1 + dp[i-1][j-1];
+                    
+                            int prev = i - dp[i][j] +1;
+                            int col = j;
+                            int net = col + prev;
+                            String pp ="";
+                            
+                            if(net-1 == m) //this substring is pal
+                            {
+                                
+                                int g = dp[i][j];
+                                int kk = i-1;
+                                 while(g>0){
+                                    pp += s.charAt(kk);
+                                    kk--;
+                                    g--;
+                                }
+                            
+                            if(dp[i][j] > maxChain){maxChain = dp[i][j]; ans = pp;}
+                                
+                            }
+                          
+                        }
+
+                        else {
+                            dp[i][j] = 0 ;
+                        }
+                    }
+             }
+
+
+
+        if(ans.equals("")) ans += s.charAt(0); 
+       
+       
+       
+        return (ans);
+    }
+        
+    else {return "" ;}
+        
+    }
+    
+
+}
