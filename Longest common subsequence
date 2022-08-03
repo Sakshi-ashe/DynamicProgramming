@@ -1,7 +1,7 @@
 
 import java.io.*;
 import java.util.*;
-import java.lang.Math;  
+import java.lang.Math;  //////////////////////////////////math import
 
 class TestClass {
   
@@ -26,7 +26,7 @@ class TestClass {
             String stB  =br.readLine();
             
             //string can be converted to char array also, if you want
-            //  char[] a = text1.toCharArray();
+            //  char[] a = text1.toCharArray();   //////////////////////////////////////// string to char array
             //  char[] b = text2.toCharArray();
       
 
