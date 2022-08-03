@@ -1,6 +1,8 @@
 
 import java.io.*;
 import java.util.*;
+import java.lang.Math;  
+
 class TestClass {
   
 
@@ -22,6 +24,11 @@ class TestClass {
             
             String stA  =br.readLine();
             String stB  =br.readLine();
+            
+            //string can be converted to char array also, if you want
+            //  char[] a = text1.toCharArray();
+            //  char[] b = text2.toCharArray();
+      
 
 
             int[][] dp= new int[m+1][n+1];
